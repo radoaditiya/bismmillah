@@ -42,28 +42,85 @@ button{
     cursor:pointer;
 }
 
-/* background popup */
+/* BACKGROUND POPUP */
 .popup{
     position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(9, 9, 9, 0.6);
+    inset:0; /* ganti top,left,width,height */
+    padding:15px;
+    background:rgba(0,0,0,.85);
+
     display:none;
     justify-content:center;
     align-items:center;
+
 }
 
-/* isi popup */
+/* ISI POPUP */
 .popup-content{
-    background:rgb(255, 255, 255);
-    color:black;
-    padding:10px;
-    width:550px;
+    position:relative;
+    z-index:99999;
+
+    width:min(95vw,1400px);
+    height:min(90vh,900px);
+
+    background:#fff;
     border-radius:20px;
-    text-align:center;
-    animation:muncul 0.3s ease;
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+
+    box-shadow:0 0 40px rgba(0,255,0,.4);
+
+    animation:muncul .35s ease;
+}
+
+/* iframe penuh */
+.popup-content iframe{
+    flex:1;
+    width:100%;
+    height:100%;
+    border:none;
+}
+
+/* tombol close */
+.close{
+    position:absolute;
+
+    top:15px;
+    right:20px;
+
+    z-index:10;
+
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#02fb17;
+
+    color:black;
+
+    cursor:pointer;
+}
+
+@media (max-width:768px){
+  .popup-content{
+    width:100%;
+    height:85vh;
+    border-radius:12px;
+  }
+
+  .close{
+    width:35px;
+    height:35px;
+    font-size:18px;
+  }
 }
 
 /* animasi */
@@ -76,13 +133,6 @@ button{
         transform:scale(1);
         opacity:1;
     }
-}
-
-/* tombol close */
-.close{
-    float:right;
-    font-size:20px;
-    cursor:pointer;
 }
 /* LOADER */
 #loader{
@@ -274,7 +324,7 @@ pre{
 <canvas id="particles"></canvas>
 
 <nav>
-  <a href="#sourecode full">sourecode full</a>
+  <a href="#sourecode-full">sourecode-full</a>
   <a href="#penjelasan">penjelasan</a>
   <a href="#gambar">gambar</a>
 
@@ -293,17 +343,16 @@ pre{
   <p>Nama: wegi asez jaya putra (251410007)</p>
 </header>
 
-<section id="sourecode full">
+<section id="sourecode-full">
   <div class="card">
-    <h2>sourecode full</h2>
-    <button onclick="bukaApp('popup8')">Run Code</button>
-    <div id="popup8" class="popup">
+    <h2>sourecode-full</h2>
+    <button onclick="bukaApp('popup1')">Run Code</button>
+    <div id="popup1" class="popup">
   <div class="popup-content">
-    <span class="close" onclick="tutupApp('popup8')">✖</span>
+    <span class="close" onclick="tutupApp('popup1')">✖</span>
 
     <iframe src="https://dartpad.dev/embed-inline.html?id=78834068452df58e373b8ea3b7b837ef&run=true"
-    width="100%"
-     height="400"
+   width="100%"
      loading="lazy">
     </iframe>
   </div>
@@ -486,7 +535,7 @@ NIK : 1671010101010001
 </div>
 </section>
 
-<section id="penjelasan2">
+<section id="penjelasan1">
   <div class="card">
     <h2>Class Kereta</h2>
     <div>class ini menyimpan informasi kereta.</div>
@@ -626,7 +675,7 @@ Pembayaran melalui BRI berhasil
   <img id="img2" src="./kodesemu.jpg" onclick="setActiveImage('img2')">
 </div>
 </section>
-<section id="flowchart-diagram class">
+<section id="flowchart-diagram-class">
   <div class="card">
     <h2> diagram-class</h2>
     <div class="gambar-wrapper">
@@ -705,7 +754,8 @@ window.addEventListener("resize", ()=>{
 });
 
 function bukaApp(id){
-document.getElementById(id).style.display="flex";
+  console.log("Popup dibuka:", id);
+  document.getElementById(id).style.display="flex";
 }
 
 function tutupApp(id){
