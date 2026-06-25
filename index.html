@@ -44,15 +44,18 @@ button{
 
 /* BACKGROUND POPUP */
 .popup{
-    position:fixed;
-    inset:0; /* ganti top,left,width,height */
-    padding:15px;
-    background:rgba(0,0,0,.85);
+    position: fixed;
+    top: 70px; /* tepat di bawah navbar */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
 
-    display:none;
-    justify-content:center;
-    align-items:center;
+    padding: 15px;
+    background: rgba(0,0,0,.85);
 
+    display: none;
+    justify-content: center;
+    align-items: flex-start; /* pindah ke atas */
 }
 
 /* ISI POPUP */
